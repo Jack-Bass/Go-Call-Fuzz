@@ -7,21 +7,25 @@ take and how early they appear in their respective paths.
 
 Currently, not all parameter types are supported (such as arrays, maps, slices, 
 and the empty interface/`any` type).  Struct parameters are fuzzed using the 
-(go-fuzz-headers package)[https://github.com/AdaLogics/go-fuzz-headers], and 
+[go-fuzz-headers package](https://github.com/AdaLogics/go-fuzz-headers), and 
 interfaces are supported as long as their mocks are provided in the appropriate 
-`gcf-mocks/<project-alias>` directory.  Currently, I use the 
-(mockery package)[https://github.com/vektra/mockery] to manually create mocks.
+`gcf_mocks/<project-alias>` directory.  Currently, I use the 
+[mockery package](https://github.com/vektra/mockery) to manually create mocks.
 
 ## Installing and Running
 
 To install this repository and its included example project submodule, run 
 
-`git clone --recursive https://github.com/Jack-Bass/Go-Call-Fuzz`.
+```
+git clone --recursive https://github.com/Jack-Bass/Go-Call-Fuzz
+```
 
 In the future, I plan on publishing this as a package/creating a command-line 
 tool.  For now, you can run 
 
-`go run ast-call-graph.go`
+```
+go run ast-call-graph.go
+```
 
 to invoke the program.  Running the program on a project is fairly manual so far, 
 which will be addressed in the future.  Currently, you need to manually update the 
@@ -47,7 +51,7 @@ allImports := []string{
 }
 
 // Where to store output test file
-mocksDir := "./gcf-mocks/<project-alias>"
+mocksDir := "./gcf_mocks/<project-alias>"
 
 // Start the program
 CreateCallGraph(paths, modDir, allImports, mocksDir)
@@ -60,9 +64,9 @@ placed and where the output files should go.
 
 ```
 // Storing mock_<interface-name>.go files
-gcf-mocks/<project-alias>/mock_1.go
+gcf_mocks/<project-alias>/mock_1.go
 ...
-gcf-mocks/<project-alias>/mock_N.go
+gcf_mocks/<project-alias>/mock_N.go
 
 // Output fuzzing file
 fuzzing_test/<project-alias>/fuzz_test.go
