@@ -19,3 +19,7 @@
 
 # Go workspace file
 go.work
+
+# Do not track generated files
+fuzzing_test/
+out/

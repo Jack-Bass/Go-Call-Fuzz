@@ -1,0 +1,3 @@
+[submodule "serverless-go-demo"]
+	path = serverless-go-demo
+	url = https://github.com/aws-samples/serverless-go-demo/
